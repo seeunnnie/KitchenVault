@@ -1,11 +1,11 @@
 import { useState } from 'react'
+import Navbar from './Navbar'
 
 function Dashboard() {
 
   return (
-    <div className="flex items-center justify-center h-screen bg-blue-500"> 
+    <div className="min-h-screen bg-zinc-50"> 
       <Navbar />
-      <h1 className="text-white text-4xl font-bold">This is Dashboard</h1> 
     </div>
   )
 }

@@ -1,11 +1,30 @@
 import { useState } from 'react'
 import Navbar from './Navbar'
+import Recent from './Recent'
+import Planner from './Planner'
+import Expiring from './Expiring'
 
 function Dashboard() {
 
   return (
     <div className="min-h-screen bg-zinc-50"> 
       <Navbar />
+
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+        {/* Page Header */}
+        <div className="mb-8">
+          <h1 className="text-2xl font-bold text-zinc-900">Dashboard</h1>
+          <p className="text-lg mt-2 text-zinc-900">Here's a quick overview of your kitchen!</p>
+        </div>
+
+        {/* Stack Container */}
+        <div className="flex flex-col space-y-6">
+          <Recent />
+          <Planner />
+          <Expiring />
+        </div>
+      </main>
     </div>
   )
 }

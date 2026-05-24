@@ -3,7 +3,7 @@ import { useState } from 'react'
 function Navbar() {
 
   return (
-    <nav className = "bg-amber-300 text-black p-4 shadow-sm">
+    <nav className = "bg-amber-300 text-zinc-900 p-4 shadow-sm">
       <div className = "w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> 
         <div className = "flex items-center justify-between">
 

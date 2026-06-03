@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Navbar from './Navbar'
 import Recent from './Recent'
 import Planner from './Planner'
 import Expiring from './Expiring'
@@ -8,7 +7,6 @@ function Dashboard() {
 
   return (
     <div className="min-h-screen bg-zinc-50"> 
-      <Navbar />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
 

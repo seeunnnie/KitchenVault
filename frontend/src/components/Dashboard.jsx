@@ -13,7 +13,8 @@ function Dashboard() {
         {/* Page Header */}
         <div className="mb-8">
           <h1 className="text-2xl font-bold text-zinc-900">Dashboard</h1>
-          <p className="text-lg mt-2 text-zinc-900">Here's a quick overview of your kitchen!</p>
+          <p className="text-lg text-zinc-900">Here's a quick overview of your kitchen!</p>
+          <hr className="border-black mt-5"></hr>
         </div>
 
         {/* Stack Container */}

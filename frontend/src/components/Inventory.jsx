@@ -12,6 +12,9 @@ function Inventory() {
           <hr className="border-black mt-5"></hr>
         </div>
 
+        {/* Stack Container */}
+        
+
       </main>
     </div>
   )

@@ -23,7 +23,7 @@ function Recipes() {
         <div className="flex flex-col space-y-6">
           {/* Recipe content goes here */}
 
-          {/* Layout of recipe page: create folder button; have different folders with broad recipes titles */}
+          {/* Layout of recipe page: have different folders with broad recipes titles */}
         </div>
       </main>
     </div>

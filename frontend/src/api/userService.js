@@ -1,0 +1,10 @@
+import api from "./axios";
+
+// GET all users
+export const getUsers = () => api.get("/users");
+
+// CREATE user
+export const createUser = (user) => api.post("/users", user);
+
+// DELETE user
+export const deleteUser = (id) => api.delete(`/users/${id}`);

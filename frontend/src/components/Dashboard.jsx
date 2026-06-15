@@ -1,32 +1,66 @@
-import { useState } from 'react'
-import Navbar from './Navbar'
-import Recent from './Recent'
-import Planner from './Planner'
-import Expiring from './Expiring'
+import { useEffect, useState } from "react";
+import { getUsers, createUser } from "./api";
 
-function Dashboard() {
+function App() {
+  const [users, setUsers] = useState([]);
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
+  const [email, setEmail] = useState("");
+
+  const loadUsers = async () => {
+    const res = await getUsers();
+    setUsers(res.data);
+  };
+
+  useEffect(() => {
+    loadUsers();
+  }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    await createUser({ fname, lname, email });
+
+    setFname("");
+    setLname("");
+    setEmail("");
+
+    loadUsers();
+  };
 
   return (
-    <div className="min-h-screen bg-zinc-50"> 
-      <Navbar />
+    <div style={{ padding: 20 }}>
+      <h1>KitchenVault Users</h1>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <form onSubmit={handleSubmit}>
+        <input
+          placeholder="First Name"
+          value={fname}
+          onChange={(e) => setFname(e.target.value)}
+        />
+        <input
+          placeholder="Last Name"
+          value={lname}
+          onChange={(e) => setLname(e.target.value)}
+        />
+        <input
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <button type="submit">Add User</button>
+      </form>
 
-        {/* Page Header */}
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold text-zinc-900">Dashboard</h1>
-          <p className="text-lg mt-2 text-zinc-900">Here's a quick overview of your kitchen!</p>
-        </div>
-
-        {/* Stack Container */}
-        <div className="flex flex-col space-y-6">
-          <Recent />
-          <Planner />
-          <Expiring />
-        </div>
-      </main>
+      <h2>Users</h2>
+      <ul>
+        {users.map((u) => (
+          <li key={u.id}>
+            {u.fname} {u.lname} — {u.email}
+          </li>
+        ))}
+      </ul>
     </div>
-  )
+  );
 }
 
-export default Dashboard
+export default App;

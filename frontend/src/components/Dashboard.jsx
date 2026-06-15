@@ -1,64 +1,28 @@
-import { useEffect, useState } from "react";
-import { getUsers, createUser } from "./api";
+import { useState } from "react";
+import Recent from "./Recent";
+import Planner from "./Planner";
+import Expiring from "./Expiring";
 
-function App() {
-  const [users, setUsers] = useState([]);
-  const [fname, setFname] = useState("");
-  const [lname, setLname] = useState("");
-  const [email, setEmail] = useState("");
-
-  const loadUsers = async () => {
-    const res = await getUsers();
-    setUsers(res.data);
-  };
-
-  useEffect(() => {
-    loadUsers();
-  }, []);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    await createUser({ fname, lname, email });
-
-    setFname("");
-    setLname("");
-    setEmail("");
-
-    loadUsers();
-  };
-
+function Dashboard() {
   return (
-    <div style={{ padding: 20 }}>
-      <h1>KitchenVault Users</h1>
+    <div className="min-h-screen bg-zinc-50">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        {/* Page Header */}
+        <div className="mb-8">
+          <h1 className="text-2xl font-bold text-zinc-900">Dashboard</h1>
+          <p className="text-lg text-zinc-900">
+            Here's a quick overview of your kitchen!
+          </p>
+          <hr className="border-black mt-5"></hr>
+        </div>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          placeholder="First Name"
-          value={fname}
-          onChange={(e) => setFname(e.target.value)}
-        />
-        <input
-          placeholder="Last Name"
-          value={lname}
-          onChange={(e) => setLname(e.target.value)}
-        />
-        <input
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <button type="submit">Add User</button>
-      </form>
-
-      <h2>Users</h2>
-      <ul>
-        {users.map((u) => (
-          <li key={u.id}>
-            {u.fname} {u.lname} — {u.email}
-          </li>
-        ))}
-      </ul>
+        {/* Stack Container */}
+        <div className="flex flex-col space-y-6">
+          <Recent />
+          <Planner />
+          <Expiring />
+        </div>
+      </main>
     </div>
   );
 }
